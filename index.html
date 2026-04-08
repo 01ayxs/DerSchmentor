@@ -81,16 +81,16 @@
       font-size: 1.1rem;
     }
 
-    .logo-badge {
-      width: 42px;
-      height: 42px;
+    .nav-logo-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 10px 30px rgba(255, 59, 48, 0.35);
-      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(255, 59, 48, 0.25);
+      background: rgba(255,255,255,0.04);
+      padding: 4px;
     }
+
 
     .nav-links {
       display: flex;
@@ -161,6 +161,12 @@
       color: #ffd9d3;
       font-size: 0.92rem;
       margin-bottom: 18px;
+    }
+
+    .hero-logo {
+      width: min(100%, 500px);
+      margin-bottom: 22px;
+      filter: drop-shadow(0 20px 35px rgba(255, 59, 48, 0.18));
     }
 
     .hero h1 {
@@ -613,7 +619,7 @@
   <nav class="nav">
     <div class="container nav-inner">
       <a href="#home" class="logo">
-        <div class="logo-badge">DS</div>
+        <img src="DerSchmentor.png" alt="DerSchmentor Logo" class="nav-logo-img">
         <span>DerSchmentor</span>
       </a>
 
@@ -622,7 +628,7 @@
         <a href="#about">Kanal</a>
         <a href="#socials">Socials</a>
         <a href="#merch">Merch</a>
-        <a href="https://youtube.com" target="_blank" rel="noopener" class="btn btn-primary">YouTube</a>
+        <a href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener" class="btn btn-primary">YouTube</a>
       </div>
     </div>
   </nav>
@@ -631,6 +637,7 @@
     <div class="container hero-grid">
       <div>
         <div class="eyebrow">🏁 Gaming, Cars & Entertainment</div>
+        <img src="DerSchmentor.png" alt="DerSchmentor Logo" class="hero-logo">
         <h1>Content mit <br>Speed, Style <br>und Charakter.</h1>
         <p>
           Willkommen auf der offiziellen Website von DerSchmentor. Hier findest du Videos, Projekte,
@@ -638,7 +645,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://youtube.com" target="_blank" rel="noopener">Zum Kanal</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">Zum Kanal</a>
           <a class="btn btn-secondary" href="#videos">Neueste Videos</a>
         </div>
 
@@ -723,7 +730,7 @@
           <h2>Neueste Videos</h2>
           <p>Hier kannst du später echte YouTube-Videos eintragen oder direkt deine besten Formate hervorheben.</p>
         </div>
-        <a href="https://youtube.com" target="_blank" rel="noopener" class="btn btn-secondary">Alle Videos</a>
+        <a href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener" class="btn btn-secondary">Alle Videos</a>
       </div>
 
       <div class="videos">
@@ -770,21 +777,21 @@
       </div>
 
       <div class="socials">
-        <a class="card social-card" href="https://youtube.com" target="_blank" rel="noopener">
+        <a class="card social-card" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">
           <strong>YouTube</strong>
-          <span>Hauptkanal und Uploads</span>
+          <span>@DerSchmentor</span>
         </a>
-        <a class="card social-card" href="https://instagram.com" target="_blank" rel="noopener">
+        <a class="card social-card" href="https://www.instagram.com/derschmentor/" target="_blank" rel="noopener">
           <strong>Instagram</strong>
-          <span>Behind the scenes und Posts</span>
+          <span>@derschmentor</span>
         </a>
-        <a class="card social-card" href="https://tiktok.com" target="_blank" rel="noopener">
+        <a class="card social-card" href="https://www.tiktok.com/@der.schmentor?lang=de-DE" target="_blank" rel="noopener">
           <strong>TikTok</strong>
-          <span>Shortform Content und Clips</span>
+          <span>@der.schmentor</span>
         </a>
-        <a class="card social-card" href="https://twitch.tv" target="_blank" rel="noopener">
+        <a class="card social-card" href="https://www.twitch.tv/derschmentor" target="_blank" rel="noopener">
           <strong>Twitch</strong>
-          <span>Streams und Live-Momente</span>
+          <span>@derschmentor</span>
         </a>
       </div>
     </div>
