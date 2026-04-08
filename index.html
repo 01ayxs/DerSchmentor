@@ -91,7 +91,6 @@
       padding: 4px;
     }
 
-
     .nav-links {
       display: flex;
       gap: 18px;
@@ -150,8 +149,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 30px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
       align-items: center;
     }
 
@@ -169,13 +168,14 @@
     }
 
     .hero-logo {
-      width: min(100%, 500px);
-      margin-bottom: 22px;
-      filter: drop-shadow(0 20px 35px rgba(255, 59, 48, 0.18));
+      width: min(100%, 440px);
+      margin-bottom: 24px;
+      border-radius: 24px;
+      box-shadow: 0 20px 45px rgba(255, 59, 48, 0.16);
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-size: clamp(2.6rem, 6vw, 5rem);
       line-height: 0.98;
       margin-bottom: 18px;
       letter-spacing: -1.8px;
@@ -184,7 +184,7 @@
     .hero p {
       color: var(--muted);
       font-size: 1.08rem;
-      max-width: 630px;
+      max-width: 640px;
       margin-bottom: 28px;
     }
 
@@ -199,7 +199,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
-      max-width: 650px;
+      max-width: 700px;
     }
 
     .stat {
@@ -223,107 +223,80 @@
 
     .hero-visual {
       position: relative;
-      min-height: 520px;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .car-card,
-    .overlay-card,
-    .floating-card {
-      position: absolute;
-      border-radius: var(--radius);
-      background: rgba(14, 17, 24, 0.85);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: var(--shadow);
+    .content-card {
+      width: 100%;
+      max-width: 430px;
+      min-height: 420px;
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top right, rgba(255,59,48,0.22), transparent 35%),
+        rgba(12, 14, 19, 0.95);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.42);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
       overflow: hidden;
     }
 
-    .car-card {
-      inset: 45px 0 45px 40px;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04)),
-        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80') center/cover;
-    }
-
-    .car-card::after {
+    .content-card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.08) 20%, rgba(0,0,0,0.78) 100%);
-      z-index: 0;
+      inset: auto -80px -80px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255,59,48,0.2), transparent 70%);
+      pointer-events: none;
     }
 
-    .car-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .car-tag {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 8px 12px;
+    .card-pill {
+      display: inline-flex;
+      width: fit-content;
+      padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
       font-size: 0.88rem;
       font-weight: 700;
+      color: #ffe0da;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.09);
+      margin-bottom: 18px;
     }
 
-    .car-content h2 {
-      font-size: clamp(1.7rem, 3vw, 2.6rem);
-      line-height: 1.05;
-      margin-bottom: 8px;
+    .content-card h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.02;
+      margin-bottom: 14px;
     }
 
-    .car-content p {
-      color: rgba(255,255,255,0.85);
-      max-width: 430px;
-    }
-
-    .overlay-card {
-      top: 0;
-      right: 10px;
-      width: 220px;
-      padding: 18px;
-    }
-
-    .overlay-card small,
-    .floating-card small {
-      display: block;
+    .content-card p {
       color: var(--muted);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-size: 1rem;
+      margin-bottom: 22px;
     }
 
-    .overlay-card strong {
-      display: block;
-      font-size: 1.55rem;
-      margin-bottom: 6px;
-    }
-
-    .floating-card {
-      left: 0;
-      bottom: 0;
-      width: 250px;
-      padding: 18px;
-    }
-
-    .floating-card ul {
+    .feature-list {
       list-style: none;
       display: grid;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.95rem;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
-    .floating-card li::before {
-      content: "•";
-      color: var(--accent);
-      margin-right: 10px;
+    .feature-list li {
+      color: #e8edf4;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 600;
     }
 
     section {
@@ -344,12 +317,7 @@
       margin-bottom: 8px;
     }
 
-    .section-head p {
-      color: var(--muted);
-      max-width: 650px;
-    }
-
-    .grid-3 {
+    .videos {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
@@ -361,33 +329,6 @@
       border-radius: 24px;
       padding: 24px;
       box-shadow: var(--shadow);
-    }
-
-    .card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      margin-bottom: 18px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(255,59,48,0.22), rgba(255,106,61,0.14));
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 1.4rem;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      color: var(--muted);
-    }
-
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
     }
 
     .video-card {
@@ -404,17 +345,13 @@
     }
 
     .video-card:hover .thumb {
-      aspect-ratio: 16 / 9;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      transition: transform 0.35s ease, filter 0.35s ease;
+      transform: scale(1.06);
+      filter: saturate(1.08) brightness(1.05);
     }
 
     .video-card:hover .video-body h3 {
-      margin-bottom: 10px;
-      font-size: 1.18rem;
-      transition: color 0.25s ease, text-shadow 0.25s ease;
+      color: #ffffff;
+      text-shadow: 0 0 16px rgba(255, 59, 48, 0.18);
     }
 
     .video-card:hover .btn-secondary {
@@ -427,6 +364,7 @@
       background-size: cover;
       background-position: center;
       position: relative;
+      transition: transform 0.35s ease, filter 0.35s ease;
     }
 
     .thumb::after {
@@ -440,10 +378,6 @@
     .video-card:hover .thumb::after {
       background: linear-gradient(180deg, rgba(255, 59, 48, 0.03), rgba(0,0,0,0.28));
     }
-
-    .thumb.one { background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80'); }
-    .thumb.two { background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80'); }
-    .thumb.three { background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80'); }
 
     .video-body {
       padding: 22px;
@@ -460,6 +394,7 @@
     .video-body h3 {
       margin-bottom: 10px;
       font-size: 1.18rem;
+      transition: color 0.25s ease, text-shadow 0.25s ease;
     }
 
     .video-body p {
@@ -468,26 +403,51 @@
     }
 
     .socials {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
     }
 
     .social-card {
-      text-align: center;
-      padding: 24px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      color: white;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
     }
 
-    .social-card strong {
-      display: block;
-      font-size: 1.08rem;
-      margin-bottom: 8px;
+    .social-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 18px 40px rgba(255, 59, 48, 0.18);
+      border-color: rgba(255, 90, 80, 0.35);
+      background: rgba(255,255,255,0.06);
     }
 
-    .social-card span {
-      color: var(--muted);
-      font-size: 0.95rem;
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: transform 0.25s ease;
     }
+
+    .social-card:hover .social-icon {
+      transform: scale(1.15);
+    }
+
+    .youtube-card:hover { box-shadow: 0 18px 40px rgba(255,0,0,0.25); }
+    .instagram-card:hover { box-shadow: 0 18px 40px rgba(255,0,150,0.25); }
+    .tiktok-card:hover { box-shadow: 0 18px 40px rgba(0,255,200,0.2); }
+    .twitch-card:hover { box-shadow: 0 18px 40px rgba(140,0,255,0.25); }
 
     .merch-box {
       position: relative;
@@ -509,23 +469,6 @@
       grid-template-columns: 1.1fr 0.9fr;
       gap: 22px;
       align-items: center;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .pill {
-      padding: 9px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 600;
     }
 
     .merch-preview {
@@ -598,21 +541,23 @@
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1050px) {
       .hero-grid,
       .merch-inner,
-      .grid-3,
-      .videos,
-      .socials {
+      .videos {
         grid-template-columns: 1fr;
       }
 
       .hero-visual {
-        min-height: 450px;
+        min-height: auto;
       }
 
       .hero-stats {
         grid-template-columns: 1fr;
+      }
+
+      .content-card {
+        max-width: 100%;
       }
     }
 
@@ -629,88 +574,26 @@
         padding-top: 56px;
       }
 
-      .hero-visual {
-        min-height: 380px;
-      }
-
-      .car-card {
-        inset: 35px 0 25px 0;
-      }
-
-      .overlay-card {
-        width: 180px;
-        right: 0;
-      }
-
-      .floating-card {
-        width: 200px;
-      }
-
       .section-head {
         margin-bottom: 22px;
       }
+
+      .socials {
+        justify-content: flex-start;
+      }
     }
-  /* SOCIALS */
-.socials {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.social-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  text-decoration: none;
-  color: white;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-}
-
-.social-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 18px 40px rgba(255, 59, 48, 0.18);
-  border-color: rgba(255, 90, 80, 0.35);
-  background: rgba(255,255,255,0.06);
-}
-
-.social-icon {
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.social-card:hover .social-icon {
-  transform: scale(1.15);
-}
-
-/* Plattform Farben */
-.youtube-card:hover { box-shadow: 0 18px 40px rgba(255,0,0,0.25); }
-.instagram-card:hover { box-shadow: 0 18px 40px rgba(255,0,150,0.25); }
-.tiktok-card:hover { box-shadow: 0 18px 40px rgba(0,255,200,0.2); }
-.twitch-card:hover { box-shadow: 0 18px 40px rgba(140,0,255,0.25); }
-
-</style>
+  </style>
 </head>
 <body>
   <nav class="nav">
     <div class="container nav-inner">
       <a href="#home" class="logo">
-        <img src="DerSchmentor.png" alt="DerSchmentor Logo" class="nav-logo-img">
+        <img src="https://raw.githubusercontent.com/01ayxs/DerSchmentor/main/DerSchmentor.png" alt="DerSchmentor Logo" class="nav-logo-img">
         <span>DerSchmentor</span>
       </a>
 
       <div class="nav-links">
         <a href="#videos">Videos</a>
-        <a href="#about">Kanal</a>
         <a href="#socials">Socials</a>
         <a href="#merch">Merch</a>
         <a href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener" class="btn btn-primary">YouTube</a>
@@ -721,9 +604,11 @@
   <header class="hero" id="home">
     <div class="container hero-grid">
       <div>
-        <div class="eyebrow">🏁 Gaming, Cars & Entertainment</div>
-        <img src="DerSchmentor.png" alt="DerSchmentor Logo" class="hero-logo">
-        <h1>Content mit <br>Speed, Style <br>und Charakter.</h1>
+        <div class="eyebrow">🎬 Unterhaltung, Challenges & lustige Videos</div>
+        <img src="https://raw.githubusercontent.com/01ayxs/DerSchmentor/main/DerSchmentor.png" alt="DerSchmentor Logo" class="hero-logo">
+
+        <h1>Content mit<br>Speed, Style<br>und Charakter.</h1>
+
         <p>
           Willkommen auf der offiziellen Website von DerSchmentor. Hier findest du die neuesten Videos,
           alle wichtigen Socials und alles rund um den Kanal auf einen Blick.
@@ -736,43 +621,55 @@
 
         <div class="hero-stats">
           <div class="stat">
-            <h3>Videos</h3>
-            <p>Gaming, Unterhaltung und Auto-Content an einem Ort.</p>
+            <h3>Entertainment</h3>
+            <p>Lustige Videos, Games, Chaos und alles was unterhält.</p>
           </div>
           <div class="stat">
-            <h3>Uploads</h3>
-            <p>Hier kannst du später aktuelle Projekte und Releases zeigen.</p>
+            <h3>Challenges</h3>
+            <p>Formate mit Freunden, verrückte Ideen und unerwartete Momente.</p>
           </div>
           <div class="stat">
-            <h3>Merch</h3>
-            <p>Shop-Bereich kann später direkt ergänzt werden.</p>
+            <h3>Abwechslung</h3>
+            <p>Von Imposter bis Tests – und ab und zu auch mal Auto-Content.</p>
           </div>
         </div>
       </div>
 
       <div class="hero-visual">
-        
+        <div class="content-card">
+          <div>
+            <div class="card-pill">DerSchmentor Content</div>
+            <h2>Entertainment,<br>Challenges & Chaos.</h2>
+            <p>
+              Hier geht’s nicht nur um Autos – sondern vor allem um Unterhaltung,
+              lustige Videos, Challenges und Momente mit Freunden.
+            </p>
 
-        <div class="car-card">
-          <div class="car-content">
-            <div class="car-tag">DerSchmentor Website Concept</div>
-            <h2>Ein Look wie Garage, Setup und Performance.</h2>
-            <p>Modern, dunkel, clean – mit roten Akzenten und starkem Marken-Feeling.</p>
+            <ul class="feature-list">
+              <li>🎭 Imposter & Lügen-Games</li>
+              <li>🔥 Challenges mit Freunden</li>
+              <li>😂 Lustige & chaotische Momente</li>
+              <li>🎥 Tests, Ideen & Unterhaltung</li>
+            </ul>
+          </div>
+
+          <div class="hero-actions" style="margin-bottom: 0;">
+            <a class="btn btn-primary" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">Videos ansehen</a>
           </div>
         </div>
-
-        
       </div>
     </div>
   </header>
-
-  
 
   <section id="videos">
     <div class="container">
       <div class="section-head">
         <div>
           <h2>Neueste Videos</h2>
+        </div>
+        <a href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener" class="btn btn-secondary">Alle Videos</a>
+      </div>
+
       <div class="videos">
         <article class="card video-card">
           <a href="https://www.youtube.com/watch?v=tswCUbfqT6A" target="_blank" rel="noopener">
@@ -781,7 +678,6 @@
           <div class="video-body">
             <span class="video-meta">DerSchmentor</span>
             <h3>WER IST DER IMPOSTER?!</h3>
-            
             <a href="https://www.youtube.com/watch?v=tswCUbfqT6A" target="_blank" rel="noopener" class="btn btn-secondary">Video ansehen</a>
           </div>
         </article>
@@ -793,7 +689,6 @@
           <div class="video-body">
             <span class="video-meta">DerSchmentor</span>
             <h3>5 INFLUENCER GETRÄNKE GETESTET</h3>
-            
             <a href="https://www.youtube.com/watch?v=n2Q5lpC0zs0" target="_blank" rel="noopener" class="btn btn-secondary">Video ansehen</a>
           </div>
         </article>
@@ -805,7 +700,6 @@
           <div class="video-body">
             <span class="video-meta">DerSchmentor</span>
             <h3>WER KANN BESSER LÜGEN?</h3>
-            
             <a href="https://www.youtube.com/watch?v=hAqAmp6oI64" target="_blank" rel="noopener" class="btn btn-secondary">Video ansehen</a>
           </div>
         </article>
@@ -818,26 +712,28 @@
       <div class="section-head">
         <div>
           <h2>Socials & Community</h2>
-          <p>Hier setzt du später deine echten Links ein, damit Besucher direkt überall hinkommen.</p>
         </div>
       </div>
 
       <div class="socials">
-        <a class="card social-card" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">
-          <strong>YouTube</strong>
-          <span>@DerSchmentor</span>
+        <a class="social-card youtube-card" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">
+          <span class="social-icon">▶️</span>
+          <span>YouTube</span>
         </a>
-        <a class="card social-card" href="https://www.instagram.com/derschmentor/" target="_blank" rel="noopener">
-          <strong>Instagram</strong>
-          <span>@derschmentor</span>
+
+        <a class="social-card instagram-card" href="https://www.instagram.com/derschmentor/" target="_blank" rel="noopener">
+          <span class="social-icon">📸</span>
+          <span>Instagram</span>
         </a>
-        <a class="card social-card" href="https://www.tiktok.com/@der.schmentor?lang=de-DE" target="_blank" rel="noopener">
-          <strong>TikTok</strong>
-          <span>@der.schmentor</span>
+
+        <a class="social-card tiktok-card" href="https://www.tiktok.com/@der.schmentor?lang=de-DE" target="_blank" rel="noopener">
+          <span class="social-icon">🎵</span>
+          <span>TikTok</span>
         </a>
-        <a class="card social-card" href="https://www.twitch.tv/derschmentor" target="_blank" rel="noopener">
-          <strong>Twitch</strong>
-          <span>@derschmentor</span>
+
+        <a class="social-card twitch-card" href="https://www.twitch.tv/derschmentor" target="_blank" rel="noopener">
+          <span class="social-icon">🟣</span>
+          <span>Twitch</span>
         </a>
       </div>
     </div>
@@ -848,18 +744,12 @@
       <div class="card merch-box">
         <div class="merch-inner">
           <div>
-            <div class="eyebrow" style="margin-bottom: 14px;">🛍️ Späterer Ausbau</div>
-            <h2 style="font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 12px;">Merch kann hier später direkt starten.</h2>
+            <div class="eyebrow" style="margin-bottom: 14px;">🛍️ Mehr kommt noch</div>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 12px;">Mehr als nur Videos.</h2>
             <p style="color: var(--muted); max-width: 640px;">
               Hier entsteht nach und nach die offizielle Website von DerSchmentor. Später kann dieser Bereich
               für Merch, besondere Projekte oder exklusive Aktionen genutzt werden.
             </p>
-
-            
-              <div class="pill">Hoodies</div>
-              <div class="pill">Caps</div>
-              <div class="pill">Accessoires</div>
-            </div>
 
             <div class="hero-actions" style="margin-top: 26px; margin-bottom: 0;">
               <a href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener" class="btn btn-primary">Zum Kanal</a>
@@ -880,7 +770,7 @@
   <footer>
     <div class="container footer-inner">
       <p>© 2026 DerSchmentor. Alle Rechte vorbehalten.</p>
-      <p>Website Konzept für einen modernen Kanalauftritt.</p>
+      <p>Offizielle Website von DerSchmentor.</p>
     </div>
   </footer>
 </body>
