@@ -838,33 +838,27 @@
   </footer>
 
   <script>
-    const targetDate = new Date("2026-05-01T18:00:00").getTime();
+const targetDate = new Date("2026-05-01T18:00:00").getTime();
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
 
-      if (distance <= 0) {
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
-        return;
-      }
+  // läuft im Hintergrund
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
+  // Anzeige = geheim 👀
+  document.getElementById("days").innerText = "??";
+  document.getElementById("hours").innerText = "??";
+  document.getElementById("minutes").innerText = "??";
+  document.getElementById("seconds").innerText = "??";
+}
 
-      document.getElementById("days").innerText = String(days).padStart(2, "0");
-      document.getElementById("hours").innerText = String(hours).padStart(2, "0");
-      document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
