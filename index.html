@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DerSchmentor</title>
+  <meta name="description" content="Offizielle Website von DerSchmentor – Unterhaltung, Challenges, lustige Videos und alle wichtigen Socials auf einen Blick." />
+
   <style>
     :root {
-      --bg: #0a0a0d;
+      --bg: #07080b;
       --bg-soft: #111318;
       --card: rgba(255,255,255,0.06);
       --card-border: rgba(255,255,255,0.12);
@@ -60,7 +62,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(16px);
-      background: rgba(10, 10, 13, 0.7);
+      background: rgba(10, 10, 13, 0.72);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -116,7 +118,7 @@
       padding: 14px 20px;
       border-radius: 999px;
       font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       border: 1px solid transparent;
       cursor: pointer;
     }
@@ -135,7 +137,6 @@
       background: rgba(255,255,255,0.05);
       border-color: rgba(255,255,255,0.12);
       color: var(--text);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
     .btn-secondary:hover {
@@ -392,14 +393,9 @@
     }
 
     .video-body h3 {
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       font-size: 1.18rem;
       transition: color 0.25s ease, text-shadow 0.25s ease;
-    }
-
-    .video-body p {
-      color: var(--muted);
-      margin-bottom: 18px;
     }
 
     .socials {
@@ -471,6 +467,45 @@
       align-items: center;
     }
 
+    .countdown {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 22px 0 28px;
+    }
+
+    .time-box {
+      min-width: 84px;
+      padding: 14px 12px;
+      border-radius: 16px;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .time-box:hover {
+      transform: translateY(-4px);
+      background: rgba(255,59,48,0.09);
+      border-color: rgba(255,90,80,0.24);
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .time-box small {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .merch-preview {
       min-height: 280px;
       border-radius: 24px;
@@ -492,6 +527,11 @@
       position: relative;
       box-shadow: 0 24px 50px rgba(0,0,0,0.35);
       border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.35s ease;
+    }
+
+    .shirt:hover {
+      transform: rotate(-2deg) scale(1.04);
     }
 
     .shirt::before,
@@ -580,6 +620,10 @@
 
       .socials {
         justify-content: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 2.7rem;
       }
     }
   </style>
@@ -744,14 +788,33 @@
       <div class="card merch-box">
         <div class="merch-inner">
           <div>
-            <div class="eyebrow" style="margin-bottom: 14px;">🛍️ Mehr kommt noch</div>
-            <h2 style="font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 12px;">Mehr als nur Videos.</h2>
+            <div class="eyebrow" style="margin-bottom: 14px;">🔥 Drop kommt</div>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 12px;">DerSchmentor Merch</h2>
+
             <p style="color: var(--muted); max-width: 640px;">
-              Hier entsteht nach und nach die offizielle Website von DerSchmentor. Später kann dieser Bereich
-              für Merch, besondere Projekte oder exklusive Aktionen genutzt werden.
+              🚨 DerSchmentor Merch kommt bald! Erste limitierte Drops sind in Planung – wer zu spät ist, geht leer aus 👀🔥
             </p>
 
-            <div class="hero-actions" style="margin-top: 26px; margin-bottom: 0;">
+            <div class="countdown" id="countdown">
+              <div class="time-box">
+                <span id="days">00</span>
+                <small>Tage</small>
+              </div>
+              <div class="time-box">
+                <span id="hours">00</span>
+                <small>Std</small>
+              </div>
+              <div class="time-box">
+                <span id="minutes">00</span>
+                <small>Min</small>
+              </div>
+              <div class="time-box">
+                <span id="seconds">00</span>
+                <small>Sek</small>
+              </div>
+            </div>
+
+            <div class="hero-actions" style="margin-top: 0; margin-bottom: 0;">
               <a href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener" class="btn btn-primary">Zum Kanal</a>
               <a href="#home" class="btn btn-secondary">Zur Startseite</a>
             </div>
@@ -773,5 +836,35 @@
       <p>Offizielle Website von DerSchmentor.</p>
     </div>
   </footer>
+
+  <script>
+    const targetDate = new Date("2026-05-01T18:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").innerText = String(days).padStart(2, "0");
+      document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
