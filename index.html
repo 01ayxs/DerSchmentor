@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>DerSchmentor | Offizielle Website</title>
   <meta name="description" content="Offizielle Website von DerSchmentor – Unterhaltung, Challenges, lustige Videos, Socials und Merch." />
 
@@ -19,8 +20,15 @@
       --max: 1200px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -33,8 +41,15 @@
       overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .container {
       width: min(calc(100% - 32px), var(--max));
@@ -46,7 +61,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(16px);
-      background: rgba(10,10,13,0.72);
+      background: rgba(10,10,13,0.78);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -89,7 +104,10 @@
       transition: 0.2s ease;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
 
     .btn {
       display: inline-flex;
@@ -104,7 +122,9 @@
       cursor: pointer;
     }
 
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -118,15 +138,6 @@
       color: var(--text);
     }
 
-    section { padding: 70px 0; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-    }
-
     .eyebrow {
       display: inline-flex;
       padding: 10px 14px;
@@ -137,6 +148,10 @@
       font-size: 0.92rem;
       font-weight: 800;
       margin-bottom: 18px;
+    }
+
+    section {
+      padding: 70px 0;
     }
 
     .section-head {
@@ -152,7 +167,15 @@
       font-size: clamp(1.7rem, 3vw, 2.6rem);
     }
 
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
     /* MERCH */
+
     #merch {
       padding-top: 56px;
     }
@@ -181,7 +204,8 @@
       min-height: 620px;
       border-radius: 30px;
       background:
-        radial-gradient(circle at center, rgba(255,59,48,0.22), transparent 42%),
+        radial-gradient(circle at 50% 58%, rgba(255,59,48,0.28), transparent 33%),
+        radial-gradient(circle at center, rgba(255,59,48,0.14), transparent 45%),
         linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.1);
       display: flex;
@@ -190,30 +214,31 @@
       overflow: hidden;
     }
 
-.product-stage::before {
-  content: "DERSCHMENTOR";
-  position: absolute;
-  top: 42px;
-  left: 46%;
-  transform: translateX(-50%);
-  font-size: clamp(4.8rem, 9vw, 7.8rem);
-  font-weight: 1000;
-  line-height: 0.85;
-  letter-spacing: -0.095em;
-  color: transparent;
-  -webkit-text-stroke: 2px rgba(255,255,255,0.13);
-  text-stroke: 2px rgba(255,255,255,0.13);
-  opacity: 0.9;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-}
+    .product-stage::before {
+      content: "DERSCHMENTOR";
+      position: absolute;
+      top: 38px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(4.5rem, 8.7vw, 7.6rem);
+      font-weight: 1000;
+      line-height: 0.85;
+      letter-spacing: -0.095em;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255,255,255,0.13);
+      text-stroke: 2px rgba(255,255,255,0.13);
+      opacity: 0.95;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     .merch-slider {
       width: 100%;
       height: 100%;
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
 
     .merch-track {
@@ -231,14 +256,14 @@
       padding: 34px 24px 0;
     }
 
-.merch-slide img {
-  max-height: 590px;
-  object-fit: contain;
-  filter: drop-shadow(0 34px 45px rgba(0,0,0,0.5));
-  transition: 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
+    .merch-slide img {
+      max-height: 590px;
+      object-fit: contain;
+      filter: drop-shadow(0 34px 45px rgba(0,0,0,0.5));
+      transition: 0.3s ease;
+      position: relative;
+      z-index: 3;
+    }
 
     .product-stage:hover .merch-slide img {
       transform: scale(1.02);
@@ -266,8 +291,13 @@
       transform: translateY(-50%) scale(1.06);
     }
 
-    .slider-btn.prev { left: 18px; }
-    .slider-btn.next { right: 18px; }
+    .slider-btn.prev {
+      left: 18px;
+    }
+
+    .slider-btn.next {
+      right: 18px;
+    }
 
     .slider-dots {
       position: absolute;
@@ -295,9 +325,9 @@
     }
 
     .product-info h1 {
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
       margin-bottom: 18px;
     }
 
@@ -339,10 +369,10 @@
     }
 
     .size {
-      width: 54px;
+      min-width: 52px;
       height: 44px;
-      border-radius: 13px;
-      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.05);
       color: white;
       font-weight: 900;
@@ -355,7 +385,7 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       border-color: transparent;
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(255,59,48,0.22);
+      box-shadow: 0 10px 25px rgba(255,59,48,0.22);
     }
 
     .product-points {
@@ -367,120 +397,103 @@
       font-weight: 700;
     }
 
-    /* HERO / CONTENT */
-    .hero {
-      padding: 70px 0;
+    .product-points li {
+      color: #f2f4f8;
     }
 
-    .hero-grid {
+    /* SOCIALS */
+
+    #socials {
+      padding-top: 20px;
+    }
+
+    .socials-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 34px;
-      align-items: center;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
     }
 
-    .hero-logo {
-      width: min(100%, 400px);
-      margin-bottom: 24px;
-      border-radius: 24px;
-      box-shadow: 0 20px 45px rgba(255,59,48,0.16);
-    }
-
-    .hero h2 {
-      font-size: clamp(2.6rem, 6vw, 5rem);
-      line-height: 0.98;
-      margin-bottom: 18px;
-      letter-spacing: -1.8px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 640px;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions {
+    .social-card {
+      min-height: 112px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
-      max-width: 700px;
-    }
-
-    .stat {
-      padding: 18px;
-    }
-
-    .stat h3 {
-      font-size: 1.35rem;
-      margin-bottom: 4px;
-    }
-
-    .stat p {
-      font-size: 0.95rem;
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .content-card {
-      width: 100%;
-      max-width: 430px;
-      border-radius: 30px;
+      align-items: center;
+      gap: 18px;
+      padding: 20px;
+      border-radius: 24px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)),
-        radial-gradient(circle at top right, rgba(255,59,48,0.22), transparent 35%),
-        rgba(12,14,19,0.95);
+        linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
       border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.42);
-      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+      overflow: hidden;
+      position: relative;
     }
 
-    .card-pill {
-      display: inline-flex;
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: #ffe0da;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.09);
-      margin-bottom: 18px;
+    .social-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      opacity: 0.18;
+      transition: 0.25s ease;
     }
 
-    .content-card h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.02;
-      margin-bottom: 14px;
+    .social-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255,255,255,0.22);
     }
 
-    .content-card p {
+    .social-card:hover::after {
+      opacity: 0.28;
+      transform: scale(1.15);
+    }
+
+    .social-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
+    }
+
+    .social-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-text strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 2px;
+    }
+
+    .social-text span {
       color: var(--muted);
-      margin-bottom: 22px;
+      font-weight: 600;
+      font-size: 0.95rem;
     }
 
-    .feature-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-      margin-bottom: 24px;
+    .social-youtube::after {
+      background: #ff0000;
     }
 
-    .feature-list li {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 12px 14px;
-      font-weight: 700;
+    .social-instagram::after {
+      background: linear-gradient(135deg, #feda75, #d62976, #962fbf, #4f5bd5);
+    }
+
+    .social-tiktok::after {
+      background: linear-gradient(135deg, #25f4ee, #fe2c55);
+    }
+
+    .social-twitch::after {
+      background: #9146ff;
     }
 
     /* VIDEOS */
+
     .videos {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -528,33 +541,6 @@
       font-size: 1.18rem;
     }
 
-    /* SOCIALS */
-    .socials {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .social-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: 0.25s ease;
-      font-weight: 700;
-    }
-
-    .social-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      border-color: rgba(255,90,80,0.35);
-      background: rgba(255,255,255,0.06);
-    }
-
     footer {
       padding: 20px 0 50px;
       color: var(--muted);
@@ -570,18 +556,10 @@
     }
 
     @media (max-width: 1050px) {
-      .hero-grid,
+      .merch-grid,
       .videos,
-      .merch-grid {
+      .socials-grid {
         grid-template-columns: 1fr;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .content-card {
-        max-width: 100%;
       }
 
       .product-stage {
@@ -595,10 +573,16 @@
       .merch-slide img {
         max-height: 530px;
       }
+
+      .product-stage::before {
+        font-size: clamp(3.4rem, 14vw, 6rem);
+      }
     }
 
     @media (max-width: 700px) {
-      .nav-links { display: none; }
+      .nav-links {
+        display: none;
+      }
 
       section {
         padding: 48px 0;
@@ -624,8 +608,13 @@
         font-size: 3rem;
       }
 
-      .hero h2 {
-        font-size: 2.7rem;
+      .social-card {
+        min-height: 96px;
+      }
+
+      .social-logo {
+        width: 46px;
+        height: 46px;
       }
     }
   </style>
@@ -640,9 +629,9 @@
       </a>
 
       <div class="nav-links">
-        <a href="#merch">Merch</a>
-        <a href="#videos">Videos</a>
+        <a href="#merch" class="active">Merch</a>
         <a href="#socials">Socials</a>
+        <a href="#videos">Videos</a>
         <a href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener" class="btn btn-primary">YouTube</a>
       </div>
     </div>
@@ -675,16 +664,17 @@
             <button class="slider-btn next" type="button" onclick="changeSlide(1)">›</button>
 
             <div class="slider-dots">
-              <button class="dot active" onclick="goToSlide(0)"></button>
-              <button class="dot" onclick="goToSlide(1)"></button>
-              <button class="dot" onclick="goToSlide(2)"></button>
-              <button class="dot" onclick="goToSlide(3)"></button>
+              <button class="dot active" type="button" onclick="goToSlide(0)"></button>
+              <button class="dot" type="button" onclick="goToSlide(1)"></button>
+              <button class="dot" type="button" onclick="goToSlide(2)"></button>
+              <button class="dot" type="button" onclick="goToSlide(3)"></button>
             </div>
           </div>
 
           <div class="product-info">
             <div class="eyebrow">🔥 Offizieller Drop</div>
             <h1>DerSchmentor<br>T-Shirt</h1>
+
             <p>Das offizielle DerSchmentor T-Shirt.</p>
 
             <div class="price-row">
@@ -716,61 +706,49 @@
     </div>
   </section>
 
-  <header class="hero" id="home">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">🎬 Unterhaltung, Challenges & lustige Videos</div>
-        <img src="https://raw.githubusercontent.com/01ayxs/DerSchmentor/main/DerSchmentor.png" alt="DerSchmentor Logo" class="hero-logo">
-
-        <h2>Content mit<br>Speed, Style<br>und Charakter.</h2>
-
-        <p>
-          Willkommen auf der offiziellen Website von DerSchmentor. Hier findest du die neuesten Videos,
-          alle wichtigen Socials und den offiziellen Merch.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">Zum Kanal</a>
-          <a class="btn btn-secondary" href="#videos">Neueste Videos</a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat card">
-            <h3>Entertainment</h3>
-            <p>Lustige Videos, Games, Chaos und alles was unterhält.</p>
-          </div>
-          <div class="stat card">
-            <h3>Challenges</h3>
-            <p>Formate mit Freunden, verrückte Ideen und unerwartete Momente.</p>
-          </div>
-          <div class="stat card">
-            <h3>Merch</h3>
-            <p>Der offizielle DerSchmentor Drop ist da.</p>
-          </div>
+  <section id="socials">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Socials & Community</h2>
         </div>
       </div>
 
-      <div class="content-card">
-        <div class="card-pill">DerSchmentor Content</div>
-        <h2>Entertainment,<br>Challenges & Chaos.</h2>
-        <p>
-          Hier geht’s vor allem um Unterhaltung, lustige Videos,
-          Challenges und Momente mit Freunden.
-        </p>
+      <div class="socials-grid">
+        <a class="social-card social-youtube" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">
+          <img src="YouTube.png" alt="YouTube Logo" class="social-logo">
+          <div class="social-text">
+            <strong>YouTube</strong>
+            <span>@DerSchmentor</span>
+          </div>
+        </a>
 
-        <ul class="feature-list">
-          <li>🎭 Imposter & Lügen-Games</li>
-          <li>🔥 Challenges mit Freunden</li>
-          <li>😂 Lustige & chaotische Momente</li>
-          <li>🛒 Offizieller Merch</li>
-        </ul>
+        <a class="social-card social-instagram" href="https://www.instagram.com/derschmentor/" target="_blank" rel="noopener">
+          <img src="Instagram.png" alt="Instagram Logo" class="social-logo">
+          <div class="social-text">
+            <strong>Instagram</strong>
+            <span>@derschmentor</span>
+          </div>
+        </a>
 
-        <div class="hero-actions" style="margin-bottom: 0;">
-          <a class="btn btn-primary" href="#merch">Zum Merch</a>
-        </div>
+        <a class="social-card social-tiktok" href="https://www.tiktok.com/@der.schmentor?lang=de-DE" target="_blank" rel="noopener">
+          <img src="Tiktok.png" alt="TikTok Logo" class="social-logo">
+          <div class="social-text">
+            <strong>TikTok</strong>
+            <span>@der.schmentor</span>
+          </div>
+        </a>
+
+        <a class="social-card social-twitch" href="https://www.twitch.tv/derschmentor" target="_blank" rel="noopener">
+          <img src="Twitch.png" alt="Twitch Logo" class="social-logo">
+          <div class="social-text">
+            <strong>Twitch</strong>
+            <span>@derschmentor</span>
+          </div>
+        </a>
       </div>
     </div>
-  </header>
+  </section>
 
   <section id="videos">
     <div class="container">
@@ -818,23 +796,6 @@
     </div>
   </section>
 
-  <section id="socials">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Socials & Community</h2>
-        </div>
-      </div>
-
-      <div class="socials">
-        <a class="social-card" href="https://www.youtube.com/@DerSchmentor" target="_blank" rel="noopener">▶️ YouTube</a>
-        <a class="social-card" href="https://www.instagram.com/derschmentor/" target="_blank" rel="noopener">📸 Instagram</a>
-        <a class="social-card" href="https://www.tiktok.com/@der.schmentor?lang=de-DE" target="_blank" rel="noopener">🎵 TikTok</a>
-        <a class="social-card" href="https://www.twitch.tv/derschmentor" target="_blank" rel="noopener">🟣 Twitch</a>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="container footer-inner">
       <p>© 2026 DerSchmentor. Alle Rechte vorbehalten.</p>
@@ -843,6 +804,16 @@
   </footer>
 
   <script>
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    window.addEventListener("load", () => {
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    });
+
     let currentSlide = 0;
     const totalSlides = 4;
     const track = document.getElementById("merchTrack");
