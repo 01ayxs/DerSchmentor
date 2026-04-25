@@ -826,10 +826,34 @@
       });
     }
 
-    function changeSlide(direction) {
-      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-      updateSlider();
-    }
+function changeSlide(direction) {
+  if (direction === 1 && currentSlide === totalSlides - 1) {
+    currentSlide = 0;
+    track.style.transition = "none";
+    updateSlider();
+
+    setTimeout(() => {
+      track.style.transition = "transform 0.45s cubic-bezier(.2,.8,.2,1)";
+    }, 20);
+
+    return;
+  }
+
+  if (direction === -1 && currentSlide === 0) {
+    currentSlide = totalSlides - 1;
+    track.style.transition = "none";
+    updateSlider();
+
+    setTimeout(() => {
+      track.style.transition = "transform 0.45s cubic-bezier(.2,.8,.2,1)";
+    }, 20);
+
+    return;
+  }
+
+  currentSlide = currentSlide + direction;
+  updateSlider();
+}
 
     function goToSlide(index) {
       currentSlide = index;
