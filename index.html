@@ -190,19 +190,24 @@
       overflow: hidden;
     }
 
-    .product-stage::before {
-      content: "DERSCHMENTOR";
-      position: absolute;
-      top: 48px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: clamp(2.7rem, 7vw, 5.8rem);
-      font-weight: 1000;
-      letter-spacing: -0.08em;
-      color: rgba(255,255,255,0.055);
-      white-space: nowrap;
-      pointer-events: none;
-    }
+.product-stage::before {
+  content: "DERSCHMENTOR";
+  position: absolute;
+  top: 42px;
+  left: 46%;
+  transform: translateX(-50%);
+  font-size: clamp(4.8rem, 9vw, 7.8rem);
+  font-weight: 1000;
+  line-height: 0.85;
+  letter-spacing: -0.095em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255,255,255,0.13);
+  text-stroke: 2px rgba(255,255,255,0.13);
+  opacity: 0.9;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
 
     .merch-slider {
       width: 100%;
@@ -226,12 +231,14 @@
       padding: 34px 24px 0;
     }
 
-    .merch-slide img {
-      max-height: 590px;
-      object-fit: contain;
-      filter: drop-shadow(0 34px 45px rgba(0,0,0,0.5));
-      transition: 0.3s ease;
-    }
+.merch-slide img {
+  max-height: 590px;
+  object-fit: contain;
+  filter: drop-shadow(0 34px 45px rgba(0,0,0,0.5));
+  transition: 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
 
     .product-stage:hover .merch-slide img {
       transform: scale(1.02);
