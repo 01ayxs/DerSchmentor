@@ -1,18 +1,19 @@
-import { ArrowUpRight, Camera, Music2, Play, Radio } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { SiInstagram, SiTiktok, SiTwitch, SiYoutube } from "react-icons/si";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { socials } from "@/lib/site-data";
 
 const icons = {
-  YouTube: Play,
-  TikTok: Music2,
-  Instagram: Camera,
-  Twitch: Radio,
+  YouTube: SiYoutube,
+  TikTok: SiTiktok,
+  Instagram: SiInstagram,
+  Twitch: SiTwitch,
 };
 
 export function Socials() {
   return (
-    <section id="socials" className="border-y border-white/8 bg-[#080808] py-28 md:py-44">
+    <section id="socials" className="border-y border-white/8 bg-[#080808] py-24 sm:py-28 md:py-44">
       <div className="site-shell">
         <Reveal>
           <SectionHeading align="center" title="Folge dem Chaos überall." />
@@ -24,9 +25,11 @@ export function Socials() {
               <Reveal key={social.name} delay={index * 0.07}>
                 <a
                   href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
                   data-platform={social.name}
                   aria-label={`${social.name} öffnen`}
-                  className="social-card group relative flex min-h-64 flex-col justify-between overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#111112] p-6 transition-[transform,border-color,background-color] duration-500 hover:-translate-y-1 hover:border-white/24 md:min-h-72 md:rounded-[1.75rem] md:p-7"
+                  className="social-card group relative flex min-h-52 flex-col justify-between overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#111112] p-6 transition-[transform,border-color,background-color] duration-500 hover:-translate-y-1 hover:border-white/24 sm:min-h-64 md:min-h-72 md:rounded-[1.75rem] md:p-7"
                 >
                   <div className="flex items-start justify-between">
                     <span className="grid size-11 place-items-center rounded-full border border-white/12 bg-white/[0.04] transition-transform duration-500 group-hover:scale-110">

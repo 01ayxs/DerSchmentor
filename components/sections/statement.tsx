@@ -23,15 +23,15 @@ export function Statement() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
   return (
-    <section ref={ref} id="statement" className="relative min-h-[210vh] border-b border-white/8 bg-[#080808]">
-      <div className="site-shell sticky top-0 flex min-h-screen items-center py-24">
-        <div className="grid w-full gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+    <section ref={ref} id="statement" className="relative min-h-[185vh] border-b border-white/8 bg-[#080808] sm:min-h-[210vh]">
+      <div className="site-shell sticky top-0 flex min-h-screen items-center py-20 sm:py-24">
+        <div className="grid w-full gap-10 sm:gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <h2 className="text-balance text-[clamp(3.5rem,8vw,7.8rem)] font-semibold leading-[0.9] tracking-[-0.065em]">
+            <h2 className="text-balance text-[clamp(3rem,8vw,7.8rem)] font-semibold leading-[0.9] tracking-[-0.065em]">
               Mehr als nur Gaming.
             </h2>
           </div>
-          <div className="text-[clamp(3rem,7.5vw,7rem)] font-semibold leading-[0.92] tracking-[-0.06em] text-white">
+          <div className="text-[clamp(2.65rem,7.5vw,7rem)] font-semibold leading-[0.92] tracking-[-0.06em] text-white">
             {words.map((word, index) =>
               reducedMotion ? (
                 <span key={word} className="block text-white/85">

@@ -7,9 +7,13 @@ type ArrowLinkProps = {
 };
 
 export function ArrowLink({ href, children, variant = "light" }: ArrowLinkProps) {
+  const external = href.startsWith("http");
+
   return (
     <a
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
       className={`group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-medium transition-[background-color,color,transform] duration-300 hover:-translate-y-0.5 ${
         variant === "light"
           ? "bg-white text-black hover:bg-zinc-200"

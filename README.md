@@ -9,7 +9,7 @@ Kompletter Neuaufbau der Website für die Creator- und Entertainment-Marke **Der
 - Tailwind CSS 4
 - Motion für Animationen
 - `next/image` für optimierte Visuals
-- Lucide React für UI-Icons
+- Lucide React für UI-Icons und React Icons für Social-Brand-Icons
 - Next.js Metadata API
 - ESLint mit den Next.js Core Web Vitals-Regeln
 - pnpm
@@ -44,33 +44,33 @@ Der Production Server kann nach dem Build lokal mit `pnpm start` ausgeführt wer
 
 ```text
 app/
+  api/contact/route.ts       Vorbereiteter, validierender Mail-Endpunkt
   layout.tsx                 Globale Metadata und Root Layout
   page.tsx                   Homepage-Komposition
   globals.css                Design-Tokens und globale Styles
-  icon.tsx                   Generierter Favicon-Platzhalter
   opengraph-image.tsx        Generierte Social-Preview
   robots.ts                  robots.txt
   sitemap.ts                 sitemap.xml
-  visuals/                   Generiertes Video-Platzhalter-Visual
 components/
   layout/                    Navigation und Footer
   sections/                  Eigenständige Homepage-Sections
   ui/                        Wiederverwendbare UI-Bausteine
 lib/
+  contact.ts                 Geteiltes Kontakt-Datenmodell und Validierung
   site-data.ts               Content-Modell für Formate und Socials
-  placeholder-visual.tsx     Neutrale Bild-Platzhalter
-public/                      Platz für spätere statische Marken-Assets
+public/
+  derschmentor-logo.jpg      Offizielles DerSchmentor-Brand-Asset
 ```
 
 Statische Inhalte bleiben standardmäßig Server Components. Interaktive Navigation, Scroll-Animationen und das noch nicht angebundene Kontaktformular sind bewusst in kleine Client-Component-Grenzen aufgeteilt.
 
 ## Inhalte und spätere Integrationen
 
-- Die Latest-Content-Section nutzt ein separates Datenobjekt und kann später durch einen YouTube-API-Adapter gespeist werden.
-- Das Kontaktformular versendet aktuell keine Daten. Es kann später an eine Server Action und einen Mail-Dienst angebunden werden.
-- Social- und Rechtslinks sind Platzhalter.
-- Kanalstatistiken sind absichtlich nicht erfunden und mit `—` gekennzeichnet.
-- Die Schmenunity-Section ist für den späteren Discord-Einladungslink vorbereitet.
+- Latest Content und die Format-Cards verwenden die offiziellen YouTube-Thumbnails und verlinken die ausgewählten Videos direkt.
+- Das Kontaktformular öffnet weiterhin eine voradressierte Nachricht an `business.derschmentor@gmail.com`. Ein validierender `POST /api/contact`-Endpunkt ist für die spätere Resend-Anbindung vorbereitet, versendet derzeit aber bewusst keine E-Mails.
+- Social- und Discord-Links sind mit den offiziellen DerSchmentor-Profilen verbunden.
+- Der Statistikbereich zeigt 242 Abonnenten, 41 Videos und das Startjahr 2026.
+- Impressum und Datenschutz bleiben Platzhalter, bis die rechtlichen Inhalte vorliegen.
 - Vor dem Livegang sollten die kanonische Domain in `app/layout.tsx`, `app/robots.ts` und `app/sitemap.ts` sowie reale Social-, YouTube- und Rechtslinks bestätigt werden.
 
 ## Deployment mit Vercel

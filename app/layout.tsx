@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "DerSchmentor – Gaming, Challenges & Entertainment",
   description:
     "Gaming, Challenges und Entertainment – Content von DerSchmentor, der selten ganz nach Plan läuft.",
+  icons: {
+    icon: "/derschmentor-logo.jpg",
+    apple: "/derschmentor-logo.jpg",
+  },
   openGraph: {
     title: "DerSchmentor – Gaming, Challenges & Entertainment",
     description:

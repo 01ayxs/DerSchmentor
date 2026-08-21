@@ -3,6 +3,8 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { siteLinks } from "@/lib/site-data";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -43,8 +45,9 @@ export function Navigation() {
       }`}
     >
       <nav className="site-shell flex items-center justify-between" aria-label="Hauptnavigation">
-        <a href="#home" className="relative z-50 text-base font-semibold tracking-[-0.03em]">
-          DerSchmentor
+        <a href="#home" aria-label="DerSchmentor – zur Startseite" className="relative z-50 flex items-center gap-2.5 text-base font-semibold tracking-[-0.03em]">
+          <Image src="/derschmentor-logo.jpg" alt="" width={34} height={34} priority className="size-8.5 rounded-full object-cover" />
+          <span>DerSchmentor</span>
         </a>
 
         <div className="hidden items-center gap-5 lg:flex xl:gap-7">
@@ -60,7 +63,9 @@ export function Navigation() {
         </div>
 
         <a
-          href="#videos"
+          href={siteLinks.youtube}
+          target="_blank"
+          rel="noreferrer"
           className="hidden rounded-full bg-white px-4 py-2.5 text-xs font-medium text-black transition-transform duration-300 hover:-translate-y-0.5 lg:block xl:px-5 xl:text-sm"
         >
           YouTube ansehen
@@ -86,7 +91,7 @@ export function Navigation() {
             animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
             exit={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 flex min-h-dvh flex-col justify-end bg-[#070707] px-5 pb-8 pt-24 lg:hidden"
+            className="fixed inset-0 z-40 flex min-h-dvh flex-col justify-center overflow-y-auto bg-[#070707] px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-24 lg:hidden"
           >
             <div className="absolute inset-0 hero-vignette opacity-70" />
             <div className="relative flex flex-col">
@@ -98,15 +103,17 @@ export function Navigation() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08 + index * 0.06, duration: 0.45 }}
                   onClick={() => setOpen(false)}
-                  className="border-b border-white/10 py-3.5 text-[clamp(1.8rem,9vw,3.5rem)] font-semibold leading-none tracking-[-0.05em]"
+                  className="border-b border-white/10 py-2.5 text-[clamp(1.6rem,8vw,3.5rem)] font-semibold leading-none tracking-[-0.05em] sm:py-3.5"
                 >
                   {link.label}
                 </motion.a>
               ))}
               <a
-                href="#videos"
+                href={siteLinks.youtube}
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => setOpen(false)}
-                className="mt-8 flex min-h-13 items-center justify-center rounded-full bg-white font-medium text-black"
+                className="mt-6 flex min-h-13 items-center justify-center rounded-full bg-white font-medium text-black sm:mt-8"
               >
                 YouTube ansehen
               </a>

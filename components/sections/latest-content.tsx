@@ -13,13 +13,13 @@ export function LatestContent() {
   const scale = useTransform(scrollYProgress, [0, 1], [reducedMotion ? 1 : 0.94, 1]);
 
   return (
-    <section ref={ref} id="videos" className="site-shell py-28 md:py-44">
-      <h2 className="mb-12 text-[clamp(2.8rem,6vw,5.5rem)] font-semibold leading-none tracking-[-0.06em] md:mb-16">
+    <section ref={ref} id="videos" className="site-shell py-24 sm:py-28 md:py-44">
+      <h2 className="mb-10 text-[clamp(2.55rem,6vw,5.5rem)] font-semibold leading-none tracking-[-0.06em] sm:mb-12 md:mb-16">
         Neu auf DerSchmentor
       </h2>
 
       <motion.article style={{ scale }} className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#0c0c0d] md:rounded-[2rem]">
-        <a href={latestContent.href} aria-label={`${latestContent.title} – jetzt ansehen`} className="block">
+        <a href={latestContent.href} target="_blank" rel="noreferrer" aria-label={`${latestContent.title} – jetzt ansehen`} className="block">
           <div className="relative aspect-video overflow-hidden bg-[#111]">
             <Image
               src={latestContent.image}

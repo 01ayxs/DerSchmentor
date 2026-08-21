@@ -1,18 +1,24 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { Send } from "lucide-react";
+import { siteLinks } from "@/lib/site-data";
+import { contactEndpoint, contactPayloadFromFormData } from "@/lib/contact";
 
 export function ContactForm() {
-  const [notice, setNotice] = useState("");
-
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setNotice("Das Formular ist vorbereitet. Der Versand wird später mit einem Mail-Dienst verbunden.");
+    const payload = contactPayloadFromFormData(new FormData(event.currentTarget));
+    const subject = `Anfrage über derschmentor.de von ${payload.name}`;
+    const body = [`Name: ${payload.name}`, `E-Mail: ${payload.email}`, payload.company ? `Unternehmen: ${payload.company}` : "", "", payload.message]
+      .filter(Boolean)
+      .join("\n");
+
+    window.location.href = `mailto:${siteLinks.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-5" aria-describedby="form-notice">
+    <form onSubmit={handleSubmit} data-endpoint={contactEndpoint} className="grid gap-5" aria-describedby="form-notice">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="form-field">
           <span>Name</span>
@@ -36,8 +42,8 @@ export function ContactForm() {
           Nachricht senden
           <Send aria-hidden="true" className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
-        <p id="form-notice" aria-live="polite" className="max-w-md text-xs leading-relaxed text-white/38">
-          {notice || "Noch kein E-Mail-Versand aktiv. Deine Eingaben verlassen diese Seite nicht."}
+        <p id="form-notice" className="max-w-md text-xs leading-relaxed text-white/38">
+          Öffnet dein E-Mail-Programm und adressiert die Nachricht an {siteLinks.contactEmail}.
         </p>
       </div>
     </form>

@@ -3,6 +3,7 @@
 import { ArrowUpRight, MessagesSquare } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import { siteLinks } from "@/lib/site-data";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -17,7 +18,7 @@ export function Schmenunity() {
     <section
       ref={ref}
       id="schmenunity"
-      className="relative flex min-h-[105svh] items-center overflow-hidden border-y border-white/8 bg-[#080808] py-32 md:py-48"
+      className="relative flex min-h-[95svh] items-center overflow-hidden border-y border-white/8 bg-[#080808] py-24 sm:min-h-[105svh] sm:py-32 md:py-48"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_72%_45%,rgba(160,165,180,0.09),transparent_34%)]" />
       <motion.div
@@ -31,14 +32,14 @@ export function Schmenunity() {
       </motion.div>
 
       <div className="site-shell relative">
-        <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-24">
+        <div className="grid gap-11 sm:gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-24">
           <div>
             <motion.div
               initial={initial}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-12% 0px" }}
               transition={{ duration: 0.8, ease }}
-              className="mb-8 flex items-center gap-3"
+              className="mb-6 flex items-center gap-3 sm:mb-8"
             >
               <MessagesSquare aria-hidden="true" className="size-5 text-white/48" />
               <p className="text-xs font-medium uppercase tracking-[0.22em] text-white/42">Community</p>
@@ -48,7 +49,7 @@ export function Schmenunity() {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-12% 0px" }}
               transition={{ duration: 0.9, delay: 0.08, ease }}
-              className="text-balance text-[clamp(3.15rem,9vw,9rem)] font-semibold leading-[0.84] tracking-[-0.075em]"
+              className="text-balance text-[clamp(2.9rem,9vw,9rem)] font-semibold leading-[0.84] tracking-[-0.075em]"
             >
               Die Schmenunity.
             </motion.h2>
@@ -62,7 +63,7 @@ export function Schmenunity() {
               transition={{ duration: 0.85, delay: 0.18, ease }}
               className="text-lg leading-relaxed text-white/56 md:text-xl"
             >
-              Der Discord für alle, die mehr wollen als nur zuschauen. Gemeinsam zocken, quatschen und bei kommenden Community-Projekten dabei sein.
+              Der Discord für alle, die mehr wollen als nur zuschauen. Gemeinsam zocken, Gaming-Projekte starten, sich austauschen und bei Community-Aktionen dabei sein.
             </motion.p>
             <motion.p
               initial={initial}
@@ -81,15 +82,14 @@ export function Schmenunity() {
               className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center"
             >
               <a
-                href="#schmenunity"
-                aria-disabled="true"
-                onClick={(event) => event.preventDefault()}
+                href={siteLinks.discord}
+                target="_blank"
+                rel="noreferrer"
                 className="group inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-white px-7 text-sm font-medium text-black transition-transform duration-300 hover:-translate-y-0.5"
               >
-                Der Schmenunity beitreten
+                Discord beitreten
                 <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
-              <span className="text-xs text-white/30">Discord-Link folgt</span>
             </motion.div>
           </div>
         </div>
