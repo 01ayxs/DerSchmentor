@@ -10,6 +10,7 @@ Kompletter Neuaufbau der Website für die Creator- und Entertainment-Marke **Der
 - Motion für Animationen
 - `next/image` für optimierte Visuals
 - Lucide React für UI-Icons und React Icons für Social-Brand-Icons
+- Resend SDK für den serverseitigen E-Mail-Versand
 - Next.js Metadata API
 - ESLint mit den Next.js Core Web Vitals-Regeln
 - pnpm
@@ -44,7 +45,7 @@ Der Production Server kann nach dem Build lokal mit `pnpm start` ausgeführt wer
 
 ```text
 app/
-  api/contact/route.ts       Vorbereiteter, validierender Mail-Endpunkt
+  api/contact/route.ts       Validierung und Resend-E-Mail-Versand
   layout.tsx                 Globale Metadata und Root Layout
   page.tsx                   Homepage-Komposition
   globals.css                Design-Tokens und globale Styles
@@ -67,7 +68,7 @@ Statische Inhalte bleiben standardmäßig Server Components. Interaktive Navigat
 ## Inhalte und spätere Integrationen
 
 - Latest Content und die Format-Cards verwenden die offiziellen YouTube-Thumbnails und verlinken die ausgewählten Videos direkt.
-- Das Kontaktformular öffnet weiterhin eine voradressierte Nachricht an `business.derschmentor@gmail.com`. Ein validierender `POST /api/contact`-Endpunkt ist für die spätere Resend-Anbindung vorbereitet, versendet derzeit aber bewusst keine E-Mails.
+- Das Kontaktformular sendet über den serverseitigen `POST /api/contact`-Endpunkt an `business.derschmentor@gmail.com`. Der Resend API Key bleibt ausschließlich serverseitig.
 - Social- und Discord-Links sind mit den offiziellen DerSchmentor-Profilen verbunden.
 - Der Statistikbereich zeigt 242 Abonnenten, 41 Videos und das Startjahr 2026.
 - Impressum und Datenschutz bleiben Platzhalter, bis die rechtlichen Inhalte vorliegen.
@@ -80,5 +81,19 @@ Statische Inhalte bleiben standardmäßig Server Components. Interaktive Navigat
 3. Build Command `pnpm build` und Install Command `pnpm install` beibehalten.
 4. Falls später externe Dienste hinzukommen, deren Umgebungsvariablen in Vercel hinterlegen.
 5. Deployment auslösen und danach die produktive Domain in den Metadata-Dateien eintragen.
+
+## Resend-Konfiguration
+
+`.env.example` nach `.env.local` kopieren und einen gültigen API Key hinterlegen:
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxx
+```
+
+Ohne `RESEND_FROM_EMAIL` wird Resends Test-Absender verwendet. Nach der Verifizierung von `derschmentor.com` kann der produktive Absender ohne Codeänderung gesetzt werden:
+
+```bash
+RESEND_FROM_EMAIL="DerSchmentor Website <kontakt@derschmentor.com>"
+```
 
 Es wurden in diesem Rebuild keine externen Domains, Vercel-Projekte oder Drittanbieter-Dienste verändert.
