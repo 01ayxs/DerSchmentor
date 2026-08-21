@@ -68,7 +68,7 @@ Statische Inhalte bleiben standardmäßig Server Components. Interaktive Navigat
 ## Inhalte und spätere Integrationen
 
 - Latest Content und die Format-Cards verwenden die offiziellen YouTube-Thumbnails und verlinken die ausgewählten Videos direkt.
-- Das Kontaktformular sendet über den serverseitigen `POST /api/contact`-Endpunkt an `business.derschmentor@gmail.com`. Der Resend API Key bleibt ausschließlich serverseitig.
+- Das Kontaktformular sendet eine HTML- und Textversion über den serverseitigen `POST /api/contact`-Endpunkt an `business.derschmentor@gmail.com`. Der Resend API Key bleibt ausschließlich serverseitig.
 - Social- und Discord-Links sind mit den offiziellen DerSchmentor-Profilen verbunden.
 - Der Statistikbereich zeigt 242 Abonnenten, 41 Videos und das Startjahr 2026.
 - Impressum und Datenschutz bleiben Platzhalter, bis die rechtlichen Inhalte vorliegen.
