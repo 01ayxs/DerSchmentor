@@ -30,14 +30,9 @@ export function Hero() {
       />
 
       <motion.div style={{ y, opacity }} className="site-shell relative z-10 py-20 text-center sm:py-24">
-        <motion.h1
-          initial={{ opacity: 0, y: 26, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-balance text-[clamp(3rem,14vw,12rem)] font-semibold leading-[0.82] tracking-[-0.075em]"
-        >
+        <h1 className="text-balance text-[clamp(3rem,14vw,12rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
           DerSchmentor<span className="text-white/40">.</span>
-        </motion.h1>
+        </h1>
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
