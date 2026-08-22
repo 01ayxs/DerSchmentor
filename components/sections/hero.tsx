@@ -5,6 +5,17 @@ import { useRef } from "react";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { siteLinks } from "@/lib/site-data";
 
+const heroEntrance = {
+  opacity: [1, 0.86, 1],
+  y: [0, -5, 0],
+};
+
+const heroEntranceTransition = (delay: number) => ({
+  duration: 0.7,
+  delay,
+  ease: [0.22, 1, 0.36, 1] as const,
+});
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
@@ -30,26 +41,40 @@ export function Hero() {
       />
 
       <motion.div style={{ y, opacity }} className="site-shell relative z-10 py-20 text-center sm:py-24">
-        <h1 className="text-balance text-[clamp(3rem,14vw,12rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
-          DerSchmentor<span className="text-white/40">.</span>
-        </h1>
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.32 }}
+        <motion.h1
+          initial={false}
+          animate={reducedMotion ? undefined : heroEntrance}
+          transition={heroEntranceTransition(0)}
+          className="text-balance text-[clamp(3rem,14vw,12rem)] font-semibold leading-[0.82] tracking-[-0.075em]"
         >
-          <p className="mt-8 text-[clamp(1.2rem,3vw,2.2rem)] font-medium tracking-[-0.035em] text-white/90 sm:mt-9">
-            Gaming. Challenges. Entertainment.
-          </p>
-          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/48 md:text-lg">
-            Content, der nicht ganz nach Plan läuft.
-          </p>
-          <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-            <ArrowLink href={siteLinks.youtube}>YouTube ansehen</ArrowLink>
-            <ArrowLink href="#statement" variant="dark">
-              Mehr erfahren
-            </ArrowLink>
-          </div>
+          DerSchmentor<span className="text-white/40">.</span>
+        </motion.h1>
+        <motion.p
+          initial={false}
+          animate={reducedMotion ? undefined : heroEntrance}
+          transition={heroEntranceTransition(0.1)}
+          className="mt-8 text-[clamp(1.2rem,3vw,2.2rem)] font-medium tracking-[-0.035em] text-white/90 sm:mt-9"
+        >
+          Gaming. Challenges. Entertainment.
+        </motion.p>
+        <motion.p
+          initial={false}
+          animate={reducedMotion ? undefined : heroEntrance}
+          transition={heroEntranceTransition(0.2)}
+          className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/48 md:text-lg"
+        >
+          Content, der nicht ganz nach Plan läuft.
+        </motion.p>
+        <motion.div
+          initial={false}
+          animate={reducedMotion ? undefined : heroEntrance}
+          transition={heroEntranceTransition(0.3)}
+          className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center"
+        >
+          <ArrowLink href={siteLinks.youtube}>YouTube ansehen</ArrowLink>
+          <ArrowLink href="#statement" variant="dark">
+            Mehr erfahren
+          </ArrowLink>
         </motion.div>
       </motion.div>
     </section>
