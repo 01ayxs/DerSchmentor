@@ -4,9 +4,13 @@ import Image from "next/image";
 import { ArrowUpRight, Play } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { latestContent } from "@/lib/site-data";
+import type { LatestContentItem } from "@/lib/site-data";
 
-export function LatestContent() {
+type LatestContentProps = {
+  content: LatestContentItem;
+};
+
+export function LatestContent({ content }: LatestContentProps) {
   const ref = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
@@ -19,11 +23,11 @@ export function LatestContent() {
       </h2>
 
       <motion.article style={{ scale }} className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#0c0c0d] md:rounded-[2rem]">
-        <a href={latestContent.href} target="_blank" rel="noreferrer" aria-label={`${latestContent.title} – jetzt ansehen`} className="block">
+        <a href={content.href} target="_blank" rel="noreferrer" aria-label={`${content.title} – jetzt ansehen`} className="block">
           <div className="relative aspect-video overflow-hidden bg-[#111]">
             <Image
-              src={latestContent.image}
-              alt={latestContent.imageAlt}
+              src={content.image}
+              alt={content.imageAlt}
               fill
               sizes="(max-width: 1536px) 100vw, 1440px"
               className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
@@ -35,11 +39,11 @@ export function LatestContent() {
           </div>
           <div className="grid gap-8 p-6 md:grid-cols-[1fr_auto] md:items-end md:p-10 lg:p-12">
             <div>
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-white/40">{latestContent.category}</p>
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-white/40">{content.category}</p>
               <h3 className="max-w-4xl text-[clamp(2rem,4vw,4.4rem)] font-semibold leading-[0.96] tracking-[-0.055em]">
-                {latestContent.title}
+                {content.title}
               </h3>
-              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/46 md:text-base">{latestContent.description}</p>
+              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/46 md:text-base">{content.description}</p>
             </div>
             <span className="inline-flex items-center gap-2 text-sm font-medium">
               Jetzt ansehen

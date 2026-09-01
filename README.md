@@ -11,6 +11,7 @@ Kompletter Neuaufbau der Website für die Creator- und Entertainment-Marke **Der
 - `next/image` für optimierte Visuals
 - Lucide React für UI-Icons und React Icons für Social-Brand-Icons
 - Resend SDK für den serverseitigen E-Mail-Versand
+- YouTube Data API v3 für aktuelle Kanal- und Video-Daten
 - Next.js Metadata API
 - ESLint mit den Next.js Core Web Vitals-Regeln
 - pnpm
@@ -59,6 +60,7 @@ components/
 lib/
   contact.ts                 Geteiltes Kontakt-Datenmodell und Validierung
   site-data.ts               Content-Modell für Formate und Socials
+  server/youtube.ts          Gecachte serverseitige YouTube-Datenanbindung
 public/
   derschmentor-logo.jpg      Offizielles DerSchmentor-Brand-Asset
 ```
@@ -67,10 +69,11 @@ Statische Inhalte bleiben standardmäßig Server Components. Interaktive Navigat
 
 ## Inhalte und spätere Integrationen
 
-- Latest Content und die Format-Cards verwenden die offiziellen YouTube-Thumbnails und verlinken die ausgewählten Videos direkt.
+- Latest Content sowie Abonnenten- und Videoanzahl werden serverseitig über die YouTube Data API geladen und 15 Minuten zwischengespeichert. Bei einem API-Ausfall erscheinen stabile Fallback-Inhalte.
+- Die Format-Cards bleiben redaktionell festgelegt und verwenden die offiziellen YouTube-Thumbnails der ausgewählten Videos.
 - Das Kontaktformular sendet eine HTML- und Textversion über den serverseitigen `POST /api/contact`-Endpunkt an `business.derschmentor@gmail.com`. Der Resend API Key bleibt ausschließlich serverseitig.
 - Social- und Discord-Links sind mit den offiziellen DerSchmentor-Profilen verbunden.
-- Der Statistikbereich zeigt 242 Abonnenten, 41 Videos und das Startjahr 2026.
+- Das Startjahr 2026 bleibt im Statistikbereich statisch.
 - Impressum und Datenschutz bleiben Platzhalter, bis die rechtlichen Inhalte vorliegen.
 - Vor dem Livegang sollten die kanonische Domain in `app/layout.tsx`, `app/robots.ts` und `app/sitemap.ts` sowie reale Social-, YouTube- und Rechtslinks bestätigt werden.
 
@@ -95,5 +98,15 @@ Ohne `RESEND_FROM_EMAIL` wird Resends Test-Absender verwendet. Nach der Verifizi
 ```bash
 RESEND_FROM_EMAIL="DerSchmentor Website <kontakt@derschmentor.com>"
 ```
+
+## YouTube-Konfiguration
+
+Für aktuelle öffentliche Kanaldaten wird ein YouTube Data API v3 Key benötigt:
+
+```bash
+YOUTUBE_API_KEY=your_youtube_data_api_key
+```
+
+Der Key wird ausschließlich im Servermodul verwendet und nicht an Browser-Komponenten übergeben. Für ein Vercel-Deployment muss `YOUTUBE_API_KEY` zusätzlich in den Environment Variables des Vercel-Projekts gesetzt werden.
 
 Es wurden in diesem Rebuild keine externen Domains, Vercel-Projekte oder Drittanbieter-Dienste verändert.

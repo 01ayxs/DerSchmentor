@@ -1,13 +1,18 @@
 import { Reveal } from "@/components/ui/reveal";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 
-const stats = [
-  { value: 242, start: 0, label: "Abonnenten" },
-  { value: 41, start: 0, label: "Videos" },
-  { value: 2026, start: 2000, label: "Seit" },
-];
+type AboutProps = {
+  subscriberCount: number;
+  videoCount: number;
+};
 
-export function About() {
+export function About({ subscriberCount, videoCount }: AboutProps) {
+  const stats = [
+    { value: subscriberCount, start: 0, label: "Abonnenten" },
+    { value: videoCount, start: 0, label: "Videos" },
+    { value: 2026, start: 2000, label: "Seit" },
+  ];
+
   return (
     <section id="ueber-uns" className="site-shell py-24 sm:py-32 md:py-56">
       <div className="max-w-6xl">

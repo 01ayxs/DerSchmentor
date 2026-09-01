@@ -7,7 +7,17 @@ export const siteLinks = {
   contactEmail: "business.derschmentor@gmail.com",
 } as const;
 
-export const latestContent = {
+export type LatestContentItem = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  href: string;
+  image: string;
+  imageAlt: string;
+};
+
+export const latestContent: LatestContentItem = {
   id: "BrEWdBKW35Y",
   title: "Wir sind zum Fichtelevent getrampt…",
   description: "Jetzt auf dem DerSchmentor YouTube-Kanal.",

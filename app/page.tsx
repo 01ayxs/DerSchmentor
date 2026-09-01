@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Footer } from "@/components/layout/footer";
 import { Navigation } from "@/components/layout/navigation";
 import { About } from "@/components/sections/about";
@@ -9,6 +10,9 @@ import { LatestContent } from "@/components/sections/latest-content";
 import { Schmenunity } from "@/components/sections/schmenunity";
 import { Socials } from "@/components/sections/socials";
 import { Statement } from "@/components/sections/statement";
+import { LatestYouTubeContent, YouTubeStats } from "@/components/sections/youtube-content";
+import { latestContent } from "@/lib/site-data";
+import { youtubeFallbackData } from "@/lib/server/youtube";
 
 export default function Home() {
   return (
@@ -23,10 +27,21 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Statement />
-        <LatestContent />
+        <Suspense fallback={<LatestContent content={latestContent} />}>
+          <LatestYouTubeContent />
+        </Suspense>
         <Formats />
         <ChaosTransition />
-        <About />
+        <Suspense
+          fallback={
+            <About
+              subscriberCount={youtubeFallbackData.subscriberCount}
+              videoCount={youtubeFallbackData.videoCount}
+            />
+          }
+        >
+          <YouTubeStats />
+        </Suspense>
         <Schmenunity />
         <Socials />
         <Contact />
